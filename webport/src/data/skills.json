@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "React",
+    "category": "frontend",
+    "icon": "react"
+  },
+  {
+    "id": 2,
+    "name": "TypeScript",
+    "category": "frontend",
+    "icon": "typescript"
+  },
+  {
+    "id": 3,
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "icon": "tailwind"
+  },
+   {
+    "id": 4,
+    "name": "Bootstarp5",
+    "category": "frontend",
+    "icon": "bootstarp"
+  },
+  {
+    "id": 5,
+    "name": "Django",
+    "category": "backend",
+    "icon": "django"
+  },
+  {
+    "id": 6,
+    "name": "Go",
+    "category": "backend",
+    "icon": "go"
+  },
+      {
+    "id": 7,
+    "name": "Php",
+    "category": "backend",
+    "icon": "php"
+  },
+  {
+    "id": 8,
+    "name": "MongoDB",
+    "category": "backend",
+    "icon": "mongodb"
+  },
+  {
+    "id": 9,
+    "name": "Vite",
+    "category": "tools",
+    "icon": "vite"
+  },
+  {
+    "id": 10,
+    "name": "Vercel",
+    "category": "tools",
+    "icon": "vercel"
+  },
+  {
+    "id": 11,
+    "name": "Git",
+    "category": "tools",
+    "icon": "git"
+  },
+ {
+    "id": 12,
+    "name": "Github",
+    "category": "tools",
+    "icon": "github"
+  },
+   {
+    "id": 13,
+    "name": "C/C++",
+    "category": "data",
+    "icon": "C++"
+  },
+   {
+    "id": 14,
+    "name": "Numpy",
+    "category": "data",
+    "icon": "numpy"
+  },
+  {
+    "id": 15,
+    "name": "Python",
+    "category": "data",
+    "icon": "python"
+  }
+]

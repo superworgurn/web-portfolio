@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "title": "React คืออะไร",
+    "excerpt": "ในโลกของการพัฒนาเว็บแอปพลิเคชันที่เปลี่ยนแปลงอย่างรวดเร็ว React ได้กลายเป็นหนึ่งในไลบรารี JavaScript ที่ได้รับความนิยมสูงสุด บทความนี้จะพาคุณทำความรู้จักกับ React ตั้งแต่พื้นฐาน ไปจนถึงการนำไปใช้งานจริง เหมาะสำหรับทั้งผู้เริ่มต้น และ ผู้ที่ต้องการทบทวนความรู้",
+    "content": "★ ​React คืออะไร\n React คือ ไลบรารี JavaScript สำหรับสร้างส่วนติดต่อผู้ใช้ (UI) ที่พัฒนาโดย Facebook โดยมีลักษณะเด่นคือ:\n- ใช้แนวคิด Component-Based Architecture\n- มี Virtual DOM สำหรับเพิ่มประสิทธิภาพการแสดงผล\n- ใช้ JSX สำหรับเขียนโค้ดที่ผสมผสานระหว่าง HTML และ JavaScript\n- เป็น Single Page Application (SPA) Framework\n\n☆ Virtual DOM\n React สร้าง Virtual DOM (สำเนาของ DOM จริง) เพื่อ:\n- เปรียบเทียบการเปลี่ยนแปลง (Diffing Algorithm)\n- อัปเดตเฉพาะส่วนที่จำเป็น (Efficient Reconciliation)\n- ลดการทำงานกับ DOM จริงที่ใช้ทรัพยากรสูง\n\n★ ​ประเภทของ React\n 1) แบ่งตามขนาด\n- Small Scale : เว็บไซต์ขนาดเล็ก (Portfolio, Landing Page)\n- Medium Scale : เว็บแอปพลิเคชัน (E-commerce, Blog)\n- Large Scale : แอปพลิเคชันระดับองค์กร (Social Media, SaaS)\n 2) แบ่งตามสถาปัตยกรรม \n - CSR (Client-Side Rendering) : แสดงผลฝั่งไคลเอนต์ทั้งหมด\n - SSR (Server-Side Rendering) : แสดงผลจากเซิร์ฟเวอร์ (Next.js)\n - SSG (Static Site Generation) : เตรียมหน้าเว็บล่วงหน้า (Gatsby)\n\n ★ ​ประโยชน์\n✅ การเขียนโค้ดแบบ Reusable Components\n✅ ประสิทธิภาพสูงด้วย Virtual DOM\n✅ เรียนรู้ครั้งเดียว เขียนได้ทุกที่ (Web, Mobile, Desktop)\n✅ ระบบ Ecosystem ที่แข็งแกร่ง (เครื่องมือ และ ไลบรารีเสริมมากมาย)\n✅ เหมาะสำหรับการทำงานเป็นทีม\n✅ รองรับทั้ง CSR, SSR และ SSG\n\n ★ ​เครื่องมือที่ใช้ร่วมกับ React\n 🛠️ Create React App : สร้างโปรเจค React เบื้องต้น\n  🛠️ Next.js : Framework สำหรับ Server-Side Rendering\n  🛠️ React Router : จัดการ Routing\n  🛠️ Redux : จัดการ State ระดับแอปพลิเคชัน\n  🛠️ Material-UI : ชุด Component UI สำเร็จรูป ",
+    "author": "Worgurn Ruenpitak (Shoper Gamer)",
+    "date": "2024-01-15",
+    "readTime": "8 min read",
+    "category": "Frontend",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Web Development"
+    ],
+    "imageUrl": "https://t1.blockdit.com/photos/2025/08/68a2cc8a94fef06bf69cdd53_800x0xcover_PpnF2tmw.jpg",
+    "featured": true
+  },
+{
+  "id": 2,
+  "title": "API Key คืออะไร",
+  "excerpt": "ในโลกของระบบคลาวด์และ บริการเว็บที่เชื่อมโยงถึงกัน API Key ได้กลายเป็นองค์ประกอบสำคัญที่ช่วยให้แอปพลิเคชันต่างๆ สามารถสื่อสาร และ ใช้งานบริการจากผู้ให้บริการอื่นได้อย่างปลอดภัย และ มีประสิทธิภาพ บทความนี้จะพาคุณเจาะลึก ทำความเข้าใจกับ API Key ตั้งแต่พื้นฐานไปจนถึงแนวทางการรักษาความปลอดภัยที่ถูกต้อง",
+  "content": "★ ​API Key คืออะไร\nAPI Key คือ รหัสลับเฉพาะตัว ที่ใช้เพื่อระบุตัวตน และ ให้สิทธิ์การเข้าถึง API (Application Programming Interface) โดยทำหน้าที่เหมือนกุญแจดิจิทัลที่อนุญาตให้แอปพลิเคชันของคุณร้องขอข้อมูล หรือ บริการจากเซิร์ฟเวอร์ภายนอก\n\n★ ​ลักษณะสำคัญ\n- รหัสไม่ซ้ำกัน\nสร้างขึ้นเฉพาะสำหรับผู้ใช้ หรือ แอปพลิเคชันแต่ละราย\n- ใช้ยืนยันตัวตน (Authentication) เพื่อพิสูจน์ว่าผู้ที่ส่งคำขอนั้นเป็นใคร\n- ควบคุมสิทธิ์การเข้าถึง สามารถกำหนดได้ว่า Key นี้เข้าถึงฟังก์ชันใดได้บ้าง\n- รูปแบบ มักเป็นชุดตัวอักษรและ ตัวเลขที่มีความยาวตั้งแต่ 32-64 ตัวอักษร\n\n★ ​API Key ทำงานอย่างไร\n1) ส่งคำขอ\nแอปพลิเคชันของคุณส่งคำขอ (Request) ไปยัง API Server พร้อมแนบ API Key ไปด้วย\n2) ตรวจสอบ\nเซิร์ฟเวอร์ตรวจสอบ Key กับ ฐานข้อมูล เพื่อยืนยันว่า Key นั้นถูกต้อง และ ยังไม่หมดอายุ\n3) อนุมัติสิทธิ์\nเซิร์ฟเวอร์ตรวจสอบสิทธิ์ (Authorization) ว่า Key นั้นสามารถเข้าถึงข้อมูลที่ร้องขอได้หรือไม่\n4) ตอบกลับ\nหากทุกอย่างถูกต้อง เซิร์ฟเวอร์จะตอบกลับผลลัพธ์ (เช่น ข้อมูลสภาพอากาศ หรือ การยืนยันการชำระเงิน) ไปยังแอปพลิเคชัน\n\n★ ​ประเภทของ API Key\n1) Public API Key\n- ใช้สำหรับ: ระบุแอปพลิเคชันเพื่อวัตถุประสงค์ในการติดตามการใช้งาน\n- ความปลอดภัย: ค่อนข้างต่ำ สามารถเปิดเผยในโค้ดฝั่ง Front-end ได้\n- ตัวอย่าง: Google Maps API ที่ใช้แสดงแผนที่บนหน้าเว็บ (เพราะ Key นี้ไม่ได้เข้าถึงข้อมูลส่วนตัวของผู้ใช้)\n2) Secret API Key (กุญแจลับ)\n- ใช้สำหรับ: ยืนยันตัวตนเพื่อเข้าถึงฟังก์ชันที่มีความอ่อนไหวสูง\n- ความปลอดภัย: สูงมาก ต้องเก็บเป็นความลับ และ ใช้งานในฝั่ง Server-side เท่านั้น\nตัวอย่าง: Key ของ Payment Gateway (เช่น Stripe Secret Key) หรือ Key สำหรับการจัดการบัญชีผู้ใช้\n3) OAuth Tokens\n- ใช้สำหรับ: การให้สิทธิ์การเข้าถึงแบบจำกัดขอบเขต (Scoped Authorization)\n- ความปลอดภัย: สูงมาก Key จะมีอายุสั้น และ ใช้เพื่อเข้าถึงข้อมูลส่วนตัวของผู้ใช้ (เช่น รายชื่อเพื่อนใน Facebook)\n- ตัวอย่าง: การที่แอปพลิเคชันขออนุญาตเข้าถึงรูปภาพใน Google Photos ของคุณ\n\n★ ​ประโยชน์\n✅ ควบคุมการเข้าถึง\nกำหนดได้ว่าใครเข้าถึงอะไรได้บ้าง\n✅ ติดตามและวิเคราะห์\nตรวจสอบการใช้งาน (Log) และ สถิติของแอปพลิเคชันต่างๆ\n✅ ป้องกันการใช้งานเกินโควต้า\nจำกัดจำนวนคำขอ (Rate Limiting) เพื่อป้องกันการใช้งานที่ผิดปกติ\n✅ เพิ่มความปลอดภัย\nใช้กลไกการเข้ารหัส และ การยืนยันตัวตนที่รัดกุมกว่าการเข้าถึงแบบสาธารณะ\n\n★ ​แนวทางการรักษาความปลอดภัยของ API Key\nเนื่องจาก API Key มีอำนาจในการเข้าถึงข้อมูล หรือ ทำธุรกรรมได้ การเก็บรักษาจึงเป็นสิ่งสำคัญที่สุด\n1) ห้ามเก็บในโค้ดโดยตรง (Hardcoding)\n○ วิธีที่ไม่ปลอดภัย\n`const API_KEY = 'sk_test_your_secret_key_here';` (เมื่อโค้ดนี้ถูกเผยแพร่ Key จะรั่วทันที)\n○ วิธีที่ปลอดภัย ใช้ Environment Variables (ตัวแปรสภาพแวดล้อม) ซึ่งเป็นวิธีมาตรฐานในการเก็บค่าลับที่แยกออกจาก Source Code\n2) กำหนดขอบเขตและจำกัดสิทธิ์\n○ กำหนด IP Whitelist อนุญาตให้ Key นั้นใช้งานได้เฉพาะจาก IP Address ของเซิร์ฟเวอร์ที่คุณกำหนดเท่านั้น\n○ จำกัดจำนวนคำขอ (Rate Limiting) กำหนดโควต้าการใช้งานต่อนาที/ต่อวัน\n○ กำหนดขอบเขต (Scopes) เช่น Key นี้ใช้ได้แค่ 'อ่านข้อมูล' ห้ามใช้ 'แก้ไข' หรือ 'ลบ'\n3) การหมุนเวียน (Key Rotation)\n○ เปลี่ยน API Key เป็นประจำ กำหนดตารางเวลาในการยกเลิก Key เก่าและสร้าง Key ใหม่ เพื่อลดความเสี่ยงหาก Key ถูกขโมยไป\n○ มี Emergency Revoke เตรียมช่องทางในการยกเลิก (Revoke) Key ทันที หากตรวจพบความผิดปกติ\n\n★ ​วิธีการส่ง API Key ที่นิยมใช้\nเมื่อแอปพลิเคชันส่งคำขอไปยังเซิร์ฟเวอร์ API Key สามารถแนบไปได้หลายรูปแบบ\n1) Query Parameters (เหมาะสำหรับ Public Key)\nAPI Key จะถูกต่อท้ายใน URL\n```\n[https://api.example.com/data?api_key=YOUR_API_KEY](https://api.example.com/data?api_key=YOUR_API_KEY)\n```\n2) HTTP Headers (เหมาะสำหรับ Secret Key)\nKey จะถูกซ่อนอยู่ในส่วนหัวของคำขอ (นิยมใช้มากที่สุดสำหรับความปลอดภัยสูง)\n```http\nGET /api/data HTTP/1.1\nHost: api.example.com\nAuthorization: Bearer YOUR_SECRET_KEY  // หรือ\nX-API-Key: YOUR_SECRET_KEY\n```",
+  "author": "Worgurn Ruenpitak (Shoper Gamer)",
+  "date": "2025-10-4",
+  "readTime": "6 min read",
+  "category": "API",
+  "tags": [
+    "API Key",
+    "Web Development"
+  ],
+  "imageUrl": "https://t1.blockdit.com/photos/2025/10/68e0b18e70d2e8868432d954_800x0xcover_ZhzYQPod.jpg",
+  "featured": true
+},
+{
+  "id": 3,
+  "title": "TypeScript คืออะไร",
+  "excerpt": "ในโลกของการพัฒนาเว็บ และ แอปพลิเคชันสมัยใหม่ TypeScript ได้กลายเป็นหนึ่งในเทคโนโลยีสำคัญที่นักพัฒนาทั่วโลกให้ความนิยม พัฒนาโดย Microsoft และ เปิดตัวครั้งแรกในปี 2012 TypeScript ถือเป็นซุปเปอร์เซ็ตของ JavaScript ที่เพิ่มความสามารถด้าน Static Typing และ คุณสมบัติระดับEnterprise ให้กับภาษา JavaScript ปกติ ทำให้การเขียนโค้ดมีระเบียบมากขึ้น ลดข้อผิดพลาด และ เพิ่มประสิทธิภาพการทำงานในโครงการขนาดใหญ่",
+  "content": "★ ​Typescript คืออะไร\nTypeScript คือ ภาษาการเขียนโปรแกรม Open-source ที่พัฒนาต่อยอดจาก JavaScript โดยเพิ่ม\n\n★ ​ตัวอย่างโค้ด Typescript\n```typescript\n// ตัวอย่างโค้ด TypeScript\nfunction greet(name: string): string {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet(\"World\")); // ผลลัพธ์: \"Hello, World!\"\n```\n\n⚡ ความสำคัญ\nTypeScript ถูกคอมไพล์เป็น JavaScript ก่อนรันบน Browser หรือ Node.js ทำให้ทำงานได้ทุกที่ที่ JavaScript ทำงานได้\n\n★ ​เหตุผลที่ควรใช้ Typescript\n☆ 1. จับข้อผิดพลาดก่อนรันโค้ด\n- ตรวจสอบชนิดข้อมูลขณะเขียนโค้ด (Compile-time)\n- ป้องกัน Bug จากประเภทข้อมูลผิดพลาด (Type Errors)\n```typescript\nlet count: number = 5;\ncount = \"five\"; // ❌ Error: ชนิดข้อมูลไม่ตรงกัน\n```\n☆ 2. การจัดการโค้ดในโครงการใหญ่\n- อ่านโค้ดง่ายจาก Annotation ชนิดข้อมูล\n- รองรับการ Refactor อย่างปลอดภัย\n- ทำงานร่วมกับ Framework ยอดนิยมเช่น Angular, React, Vue\n☆ 3. คุณสมบัติล้ำสมัย\n- Interface และ Generics\n- Decorators\n- Async/Await\n- Union/Intersection Types\n```typescript\n// ตัวอย่าง Interface\ninterface User {\n  id: number;\n  name: string;\n}\nconst user: User = { id: 1, name: \"John\" };\n```\n\n★ ​สถาปัตยกรรมหลักของ TypeScript\n☆ 1. ระบบชนิดข้อมูล (Type System)\n- Primitive Types : string, number, boolean\n- Complex Types : Array, Tuple, Enum\n- Special Types : any, unknown, never\n☆ 2. คอมไพเลอร์ (Compiler)\n- แปลง TypeScript (.ts) → JavaScript (.js)\n- ตั้งค่าได้ผ่านไฟล์ `tsconfig.json`\n```json\n// ตัวอย่าง tsconfig.json\n{\n  \"compilerOptions\": {\n    \"target\": \"ES6\",\n    \"module\": \"commonjs\"\n  }\n}\n```\n☆ 3. การทำงานกับ JavaScript มีอยู่แล้ว\n- ใช้ไลบรารี JavaScript เดิมได้ผ่าน Type Declarations (.d.ts)\n- รองรับ ECMAScript ทุกเวอร์ชัน\n\n★ ​TypeScript VS JavaScript\n☆ 1. ชนิดข้อมูล (Type System)\n- TypeScript\n  ใช้ Static Typing ต้องกำหนดชนิดข้อมูลตัวแปรล่วงหน้า\n  (`let age: number = 25;`)\n  ▶️ ตรวจสอบข้อผิดพลาดขณะคอมไพล์\n- JavaScript\n  ใช้ Dynamic Typing เปลี่ยนชนิดข้อมูลได้ตลอด\n  (`let age = 25; age = \"twenty-five\";` // ทำงานได้)\n  ▶️ ตรวจสอบชนิดข้อมูลขณะรันเท่านั้น\n☆ 2. การคอมไพล์ (Compilation)\n- TypeScript\n  ต้องคอมไพล์ เป็น JavaScript ก่อนใช้งาน (`tsc file.ts`)\n  ▶️ ได้ไฟล์ `.js` สำหรับรันบน Browser/Node.js\n- JavaScript\n  ไม่ต้องคอมไพล์รันได้ทันที (`node file.js`)\n  ▶️ สะดวกแต่เสี่ยงพบข้อผิดพลาดขณะรัน\n☆ 3. เครื่องมือพัฒนา (Development Tools)\n- TypeScript\n  IDE Support ดีมาก (VSCode, WebStorm)\n  ▶️ แนะนำโค้ด (IntelliSense)\n  ▶️ ตรวจสอบชนิดข้อมูลอัตโนมัติ\n- JavaScript\n  Support พื้นฐาน\n  ▶️ ตรวจสอบ Syntax เฉยๆ ไม่ช่วยตรวจชนิดข้อมูล\n☆ 4. ความยากในการเรียนรู้\n- TypeScript\n  ต้องรู้ JavaScript ก่อน + เรียนรู้ระบบ Type\n  ▶️ เหมาะกับนักพัฒนาที่มีพื้นฐาน\n- JavaScript\n  เริ่มต้นง่ายกว่า\n  ▶️ เขียน และ รันได้ทันที ไม่ต้องกำหนด Type\n\n★ ​ควรใช้เมื่อไหร่\n☆ เลือก TypeScript เมื่อต้องการ:\n  - โครงการที่ซับซ้อน\n  - ทำงานเป็นทีม\n  - ลด Bug จากชนิดข้อมูล\n☆ เลือก JavaScript เมื่อต้องการ:\n  - พัฒนาเร็ว\n  - สคริปต์เล็กๆ\n  - ไม่ต้องการตั้งค่าระบบคอมไพล์\n\n★ ​ตัวอย่างการใช้งาน\n☆ 1. เว็บแอปพลิเคชัน\n```typescript\n// React + TypeScript\ninterface Props {\n  title: string;\n}\nconst Header: React.FC<Props> = ({ title }) => {\n  return <h1>{title}</h1>;\n};\n```\n☆ 2. Backend Development\n```typescript\n// Node.js + Express\nimport express from 'express';\nconst app = express();\napp.get('/', (req, res) => {\n  res.send('Hello TypeScript!');\n});\napp.listen(3000);\n```\n☆ 3. Mobile Apps (React Native)\n```typescript\n// React Native Component\ntype ButtonProps = {\n  onPress: () => void;\n  label: string;\n};\nconst Button = ({ onPress, label }: ButtonProps) => {\n  return <TouchableOpacity onPress={onPress}>\n    <Text>{label}</Text>\n  </TouchableOpacity>;\n};\n```\n\n★ ​วิธีเริ่มต้นใช้ TypeScript\n1. ติดตั้งผ่าน npm:\n   ```bash\n   npm install -g typescript\n   ```\n2. สร้างไฟล์ `.ts`:\n   ```typescript\n   // app.ts\n   let message: string = \"Hello TS\";\n   console.log(message);\n   ```\n3. คอมไพล์เป็น JavaScript:\n   ```bash\n   tsc app.ts\n   ```",
+  "author": "Worgurn Ruenpitak (Shoper Gamer)",
+  "date": "2024-01-05",
+  "readTime": "5 min read",
+  "category": "Frontend",
+  "tags": [
+    "Typescript",
+    "DataType",
+    "Web Development"
+  ],
+  "imageUrl": "https://t1.blockdit.com/photos/2025/07/688b0d765c788474ca00b192_800x0xcover_8rxjdFr2.jpg",
+  "featured": false
+},
+  {
+    "id": 4,
+    "title": "Full Stack Development with Next.js 14",
+    "excerpt": "Building complete web applications with the latest version of Next.js.",
+    "content": "Next.js 14 represents a major step forward in full-stack React development. The new App Router, now stable, provides a more intuitive and powerful way to structure your applications.\n\nOne of the most significant features is Server Components. These allow you to render components on the server, reducing the JavaScript bundle sent to the client and improving performance. Data fetching becomes simpler with async components that can fetch data directly.\n\nThe new Actions feature simplifies form handling and data mutations. You can define server actions that run on the server, making it easy to handle form submissions without creating API routes manually.\n\nNext.js 14 also improves performance with better caching strategies and faster builds. The new Turbopack, now in beta, promises significantly faster development server startup and hot module replacement.\n\nFor SEO and social sharing, the improved Metadata API makes it easier to manage your page's metadata. You can define metadata at the layout, page, or component level, and Next.js will automatically handle the rest.\n\nInternationalization (i18n) is now more straightforward with built-in support for routing and localized content. You can create multilingual applications with less configuration.\n\nWhether you're building a simple website or a complex web application, Next.js 14 provides the tools and performance you need to succeed in today's web landscape.",
+    "author": "Worgurn Ruenpitak",
+    "date": "2023-12-28",
+    "readTime": "7 min read",
+    "category": "Full Stack",
+    "tags": ["Next.js", "React", "Full Stack", "Web Development"],
+    "imageUrl": "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "featured": true
+  },
+  {
+    "id": 5,
+    "title": "The Future of AI in Web Development",
+    "excerpt": "How artificial intelligence is transforming the way we build websites and applications.",
+    "content": "Artificial Intelligence is rapidly changing the landscape of web development. From code generation to automated testing, AI tools are helping developers work more efficiently and create better products.\n\nOne of the most exciting developments is AI-powered code assistants like GitHub Copilot. These tools can generate code snippets, complete functions, and even write entire components based on natural language descriptions. This doesn't replace developers but rather augments their capabilities, allowing them to focus on higher-level architecture and problem-solving.\n\nAI is also revolutionizing user experience. Personalized content, intelligent search, and predictive interfaces are becoming more common. Machine learning algorithms can analyze user behavior to optimize layouts, suggest relevant content, and improve conversion rates.\n\nIn the design phase, AI tools can generate design systems, create color palettes, and suggest layouts based on best practices. This speeds up the prototyping phase and ensures design consistency.\n\nTesting and debugging are also benefiting from AI. Automated testing tools can now generate test cases, identify edge cases, and even fix bugs automatically.\n\nAs AI continues to evolve, web developers will need to adapt and learn how to leverage these tools effectively. The future belongs to developers who can combine their technical skills with AI capabilities to build smarter, more efficient applications.",
+    "author": "Worgurn Ruenpitak",
+    "date": "2023-12-20",
+    "readTime": "9 min read",
+    "category": "AI",
+    "tags": ["AI", "Machine Learning", "Web Development", "Future"],
+    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Building Accessible Web Applications",
+    "excerpt": "Essential techniques for creating websites that everyone can use.",
+    "content": "Web accessibility is not just a legal requirement—it's a moral imperative and good business practice. Accessible websites reach more users, work better on various devices, and often rank higher in search results.\n\nThe foundation of web accessibility is semantic HTML. Using the right HTML elements (like <nav>, <main>, <article>) provides structure and meaning that assistive technologies can understand. Always use native HTML elements when possible, as they come with built-in accessibility features.\n\nKeyboard navigation is crucial for users who cannot use a mouse. Ensure all interactive elements are focusable and have visible focus states. The tab order should follow the visual layout logically.\n\nColor contrast is another critical aspect. Text should have sufficient contrast against its background to be readable by users with visual impairments. The Web Content Accessibility Guidelines (WCAG) recommend a contrast ratio of at least 4.5:1 for normal text.\n\nAlternative text for images allows screen reader users to understand visual content. Be descriptive but concise, conveying the image's purpose and content.\n\nForms should have clear labels, helpful error messages, and logical grouping. Use ARIA attributes when necessary to provide additional context to assistive technologies.\n\nTesting is essential for accessibility. Use automated tools like axe or Lighthouse, but remember that manual testing with screen readers and keyboard navigation is irreplaceable.\n\nBy building accessibility into your development process from the start, you create better experiences for all users and future-proof your applications.",
+    "author": "Worgurn Ruenpitak",
+    "date": "2023-12-15",
+    "readTime": "10 min read",
+    "category": "Accessibility",
+    "tags": ["Accessibility", "Web Development", "Best Practices", "Inclusion"],
+    "imageUrl": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "featured": false
+  }
+]
