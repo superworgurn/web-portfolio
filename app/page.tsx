@@ -1,39 +1,13 @@
 'use client';
 
-import { motion, useMotionValue, useSpring, useTransform, Variants } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, Variants, AnimatePresence } from 'framer-motion';
 import ThreeScene from '@/compo/ThreeScene';
-import { 
-  Github, 
-  Linkedin, 
-  ExternalLink, 
-  FileText, 
-  Code, 
-  Database, 
-  Box, 
-  Mail, 
-  Terminal, 
-  Cpu, 
-  ShieldCheck, 
-  LucideIcon 
-} from 'lucide-react';
-import { ReactNode, MouseEvent } from 'react';
+import { Github, Linkedin, ExternalLink, FileText, Code, Database, Box, Mail, Terminal, 
+  Cpu, ShieldCheck,ArrowUp,ArrowRight,LucideIcon } from 'lucide-react';
+import { ReactNode, MouseEvent, useState, useEffect } from 'react';
+import { projects, articles } from './Data';
 
 // --- TYPES & INTERFACES ---
-
-interface Project {
-  title: string;
-  desc: string;
-  tech: string[];
-  category: string;
-  link: string;
-}
-
-interface Article {
-  title: string;
-  date: string;
-  link: string;
-}
-
 interface TiltCardProps {
   children: ReactNode;
   className?: string;
@@ -59,8 +33,6 @@ const staggerContainer: Variants = {
     }
   }
 };
-
-// --- COMPONENTS ---
 
 // 1. Tilt Card Component (การ์ดเอียง 3D ตามเมาส์)
 function TiltCard({ children, className = "" }: TiltCardProps) {
@@ -106,7 +78,7 @@ const SectionTitle = ({ children, icon: Icon }: SectionTitleProps) => (
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true }}
-    className="flex items-center gap-3 mb-10"
+    className="flex items-center gap-3 mb-6 md:mb-10"
   >
     {Icon && <Icon className="text-cyan-400" size={32} />}
     <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
@@ -115,49 +87,46 @@ const SectionTitle = ({ children, icon: Icon }: SectionTitleProps) => (
   </motion.div>
 );
 
-// --- DATA ---
-const projects: Project[] = [
-  {
-    title: "Simple Image Converter",
-    desc: "เครื่องมือแปลงไฟล์รูปภาพและ PDF บนเบราว์เซอร์ 100% เน้นความรวดเร็วและความเป็นส่วนตัวสูงสุด",
-    tech: ["HTML", "Bootstrap", "JS"],
-    category: "Utility",
-    link: "https://github.com/ShoperGamer/Simple-Image-Converter"
-  },
-  {
-    title: "SwiftQR",
-    desc: "สร้าง QR Code รวดเร็ว ปรับแต่งได้หลากหลาย พร้อมโหมด Dark Mode เพื่อประสบการณ์ที่ดีที่สุด",
-    tech: ["HTML", "Bootstrap", "JS"],
-    category: "Utility",
-    link: "https://github.com/ShoperGamer/SwiftQR"
-  },
-  {
-    title: "Audio Converter",
-    desc: "แปลงไฟล์เสียงด้วยพลังของ WebAssembly (Wasm) ประมวลผลที่เครื่องผู้ใช้ ไม่ต้องอัปโหลดไฟล์",
-    tech: ["TypeScript", "WASM", "FFmpeg"],
-    category: "Utility / Wasm",
-    link: "https://github.com/ShoperGamer/audioconverter"
-  },
-  {
-    title: "YouTube Embed Converter",
-    desc: "แปลงลิงก์ YouTube เป็นโค้ด Embed รองรับ SEO และ Performance สูง เหมาะสำหรับ Web Dev",
-    tech: ["Tailwind", "JS"],
-    category: "Utility",
-    link: "https://github.com/ShoperGamer/YouTube-Embed-Converter" 
-  }
-];
-
-const articles: Article[] = [
-  { title: "TypeScript คืออะไร", date: "July 2025", link: "https://www.blockdit.com/posts/688b0c3eb2ed8f60ad5b1d3f" },
-  { title: "Vite + React คืออะไร", date: "Aug 2025", link: "https://www.blockdit.com/posts/68a41295d12d7c8f566a8de4" },
-  { title: "API key คืออะไร", date: "Oct 2025", link: "https://www.blockdit.com/posts/68e0b51070d2e8868434a282" },
-  { title: "NextJS คืออะไร", date: "Dec 2025", link: "https://www.blockdit.com/posts/69350609841fbacdf98f7f54" },
-  { title: "Rust คืออะไร", date: "Jan 2026", link: "https://www.blockdit.com/posts/696b3e3f8b5b0f4c4dce533b" }
-];
+// Component สำหรับบอกใบ้ว่าเลื่อนซ้ายขวาได้ (แสดงเฉพาะจอเล็ก)
+const SwipeHint = () => (
+  <div className="md:hidden flex items-center gap-2 text-cyan-400/70 text-sm mb-4 animate-pulse px-2">
+    <span>Swipe to explore</span>
+    <ArrowRight size={14} />
+  </div>
+);
 
 export default function Home() {
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  // ตรวจจับการ Scroll เพื่อแสดงปุ่ม Back to Top
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // ฟังก์ชันเลื่อนขึ้นบนสุด
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // ฟังก์ชันเลื่อนไปที่ Section Projects แบบ Smooth
+  const scrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-cyan-500/30 overflow-hidden">
+    <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-cyan-500/30 overflow-hidden relative">
       
       {/* --- 1. HERO SECTION --- */}
       <section className="relative h-screen flex items-center justify-center">
@@ -202,7 +171,8 @@ export default function Home() {
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(6,182,212,0.5)" }}
                 whileTap={{ scale: 0.95 }}
                 href="#projects" 
-                className="px-8 py-4 bg-cyan-500 text-black font-bold rounded-full shadow-lg transition-all"
+                onClick={scrollToProjects}
+                className="px-8 py-4 bg-cyan-500 text-black font-bold rounded-full shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-cyan-300"
               >
                 View Projects
               </motion.a>
@@ -210,7 +180,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
                 whileTap={{ scale: 0.95 }}
                 href="/resume.pdf" 
-                className="px-8 py-4 border border-white/20 text-white rounded-full transition-all backdrop-blur-sm flex items-center gap-2"
+                className="px-8 py-4 border border-white/20 text-white rounded-full transition-all backdrop-blur-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-white/50"
               >
                 <FileText size={18} /> Download Resume
               </motion.a>
@@ -222,7 +192,7 @@ export default function Home() {
         <motion.div 
           animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500 flex flex-col items-center gap-2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500 flex flex-col items-center gap-2 pointer-events-none"
         >
           <span className="text-xs uppercase tracking-widest">Scroll</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-cyan-500 to-transparent"></div>
@@ -242,19 +212,17 @@ export default function Home() {
               viewport={{ once: true }}
               className="md:col-span-7 space-y-6 text-gray-300 leading-relaxed text-lg"
             >
-              <div className="md:col-span-7 space-y-6 text-gray-300 leading-relaxed text-lg">
-          
-                <p className="mb-4">
-                  สวัสดีครับ ผมชื่อ <span className="text-cyan-400 font-bold">นาย วรกันต์ รื่นพิทักษ์</span> ปัจจุบันกำลังศึกษาที่มหาวิทยาลัยศรีปทุม คณะเทคโนโลยีสารสนเทศ สาขา ICT
-                </p>
-                <p className="mb-4">
-                  ผมมีความสนใจอย่างยิ่งในด้าน <span className="text-white font-medium">ปัญญาประดิษฐ์ (AI)</span>, <span className="text-white font-medium">เทคโนโลยีสารสนเทศ (IT)</span>, <span className="text-white font-medium">การเขียนบล็อก (Blogger)</span>, <span className="text-white font-medium">Cybersecurity</span> และ <span className="text-white font-medium">Social Media</span>
-                </p>
-                <p>
-                  ผมมุ่งมั่นในการพัฒนาทักษะและความรู้ในสายงานเทคโนโลยี โดยมีเป้าหมายในการนำความรู้เหล่านี้ไปประยุกต์ใช้ในการสร้างนวัตกรรมใหม่ๆ ที่จะช่วยแก้ไขปัญหาในชีวิตประจำวัน รวมถึงสร้างความปลอดภัยทางด้านข้อมูล
-                </p>
-             </div>
-              <div className="flex flex-wrap gap-3">
+              <p className="mb-4">
+                สวัสดีครับ ผมชื่อ <span className="text-cyan-400 font-bold">นาย วรกันต์ รื่นพิทักษ์</span> ปัจจุบันกำลังศึกษาที่มหาวิทยาลัยศรีปทุม คณะเทคโนโลยีสารสนเทศ สาขา ICT
+              </p>
+              <p className="mb-4">
+                ผมมีความสนใจอย่างยิ่งในด้าน <span className="text-white font-medium">ปัญญาประดิษฐ์ (AI)</span>, <span className="text-white font-medium">เทคโนโลยีสารสนเทศ (IT)</span>, <span className="text-white font-medium">การเขียนบล็อก (Blogger)</span>, <span className="text-white font-medium">Cybersecurity</span> และ <span className="text-white font-medium">Social Media</span>
+              </p>
+              <p>
+                ผมมุ่งมั่นในการพัฒนาทักษะและความรู้ในสายงานเทคโนโลยี โดยมีเป้าหมายในการนำความรู้เหล่านี้ไปประยุกต์ใช้ในการสร้างนวัตกรรมใหม่ๆ ที่จะช่วยแก้ไขปัญหาในชีวิตประจำวัน รวมถึงสร้างความปลอดภัยทางด้านข้อมูล
+              </p>
+              
+              <div className="flex flex-wrap gap-3 pt-4">
                 {['#IT', '#Blogger', '#Cybersecurity', '#FullStack'].map((tag, i) => (
                   <motion.span 
                     key={tag} 
@@ -294,16 +262,17 @@ export default function Home() {
       <section className="py-24 bg-gradient-to-b from-transparent to-[#0a0a0a]/80">
         <div className="max-w-6xl mx-auto px-6">
           <SectionTitle icon={Code}>Tech Stack</SectionTitle>
+          <SwipeHint />
           
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            viewport={{ once: true, amount: 0.1 }}
+            className="flex overflow-x-auto snap-x snap-mandatory pb-8 pt-4 -mx-6 px-6 md:mx-0 md:px-0 md:py-0 md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {/* Frontend */}
-            <motion.div variants={fadeInUp}>
+            <motion.div variants={fadeInUp} className="w-[85vw] sm:w-[350px] shrink-0 md:w-auto snap-center">
               <TiltCard className="border-t-4 border-t-cyan-500 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-cyan-500/10 rounded-lg text-cyan-400"><Code size={24} /></div>
@@ -320,7 +289,7 @@ export default function Home() {
             </motion.div>
 
              {/* Backend */}
-             <motion.div variants={fadeInUp}>
+             <motion.div variants={fadeInUp} className="w-[85vw] sm:w-[350px] shrink-0 md:w-auto snap-center">
               <TiltCard className="border-t-4 border-t-purple-500 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-purple-500/10 rounded-lg text-purple-400"><Database size={24} /></div>
@@ -336,17 +305,34 @@ export default function Home() {
               </TiltCard>
             </motion.div>
 
-            {/* Tools */}
-            <motion.div variants={fadeInUp}>
+            {/* OS */}
+            <motion.div variants={fadeInUp} className="w-[85vw] sm:w-[350px] shrink-0 md:w-auto snap-center">
               <TiltCard className="border-t-4 border-t-green-500 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-green-500/10 rounded-lg text-green-400"><Box size={24} /></div>
+                  <h3 className="text-xl font-bold">Operating System</h3>
+                </div>
+                <ul className="space-y-3 text-gray-400">
+                  {["Windows", "Ubuntu", "Kali Linux", "Mint Linux"].map(skill => (
+                    <li key={skill} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full shadow-[0_0_5px_lime]"></span>{skill}
+                    </li>
+                  ))}
+                </ul>
+              </TiltCard>
+            </motion.div>
+
+            {/* Tools & DevOps */}
+            <motion.div variants={fadeInUp} className="w-[85vw] sm:w-[350px] shrink-0 md:w-auto snap-center">
+              <TiltCard className="border-t-4 border-t-yellow-500 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-yellow-500/10 rounded-lg text-yellow-400"><Terminal size={24} /></div>
                   <h3 className="text-xl font-bold">Tools & DevOps</h3>
                 </div>
                 <ul className="space-y-3 text-gray-400">
                   {["Git / GitHub", "Docker (Basic)", "n8n (Automation)", "Vercel / Netlify"].map(skill => (
                     <li key={skill} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full shadow-[0_0_5px_lime]"></span>{skill}
+                      <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_5px_yellow]"></span>{skill}
                     </li>
                   ))}
                 </ul>
@@ -355,27 +341,30 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
+          
       {/* --- 4. PROJECTS --- */}
       <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">PROJECTS</h2>
           <p className="text-gray-400">ผลงานที่ผมสร้างขึ้นมาเพื่อแก้ปัญหา และ ฝึกฝนตัวเอง</p>
         </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <SwipeHint />
+
+        {/* Container สำหรับ Projects */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-8 pt-4 -mx-6 px-6 md:mx-0 md:px-0 md:py-0 md:grid md:grid-cols-2 gap-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {projects.map((proj, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="w-[85vw] sm:w-[400px] shrink-0 md:w-auto snap-center flex flex-col"
             >
               <TiltCard className="h-full flex flex-col justify-between">
                 <div>
@@ -383,7 +372,7 @@ export default function Home() {
                     <span className="text-xs font-bold px-3 py-1 rounded-full bg-cyan-900/30 text-cyan-300 border border-cyan-500/30">
                       {proj.category}
                     </span>
-                    <a href={proj.link} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white bg-white/5 p-2 rounded-full hover:bg-white/10 transition">
+                    <a href={proj.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${proj.title} on GitHub`} className="text-gray-400 hover:text-white bg-white/5 p-2 rounded-full hover:bg-white/10 transition">
                       <Github size={20}/>
                     </a>
                   </div>
@@ -394,7 +383,7 @@ export default function Home() {
                     {proj.desc}
                   </p>
                 </div>
-                <div className="border-t border-white/5 pt-4 flex flex-wrap justify-between items-center gap-4">
+                <div className="border-t border-white/5 pt-4 flex flex-wrap justify-between items-center gap-4 mt-auto">
                   <div className="flex flex-wrap gap-2">
                     {proj.tech.map((t, i) => (
                       <span key={i} className="text-xs text-gray-500 bg-neutral-900 border border-neutral-800 px-2 py-1 rounded">
@@ -402,7 +391,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                  <a href={proj.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition">
+                  <a href={proj.link} target="_blank" rel="noopener noreferrer" aria-label={`View code for ${proj.title}`} className="flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition shrink-0 group-hover:underline decoration-cyan-400 underline-offset-4">
                     Code <ExternalLink size={14}/>
                   </a>
                 </div>
@@ -430,15 +419,16 @@ export default function Home() {
                 href={article.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Read article: ${article.title}`}
                 variants={fadeInUp}
-                className="group block p-5 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/50 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+                className="group block p-5 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/50 hover:bg-white/10 transition-all duration-300 relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-500"
               >
                 <div className="absolute left-0 top-0 h-full w-1 bg-cyan-500 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
                 <div className="flex justify-between items-center">
                   <span className="font-medium text-lg text-gray-200 group-hover:text-cyan-400 transition-colors pl-2">
                     {article.title}
                   </span>
-                  <span className="text-xs text-gray-500 bg-black/50 px-3 py-1 rounded-full font-mono border border-white/5">
+                  <span className="text-xs text-gray-500 bg-black/50 px-3 py-1 rounded-full font-mono border border-white/5 shrink-0 ml-4">
                     {article.date}
                   </span>
                 </div>
@@ -455,18 +445,19 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
             <div className="flex flex-wrap justify-center gap-6">
               {[
-                { icon: Github, link: "https://github.com/ShoperGamer", color: "hover:bg-white hover:text-black" },
-                { icon: Linkedin, link: "https://www.linkedin.com/in/worgurn-ruenpitak-243a9330a", color: "hover:bg-[#0077b5] hover:text-white" },
-                { icon: Mail, link: "mailto:worgurn@gmail.com", color: "hover:bg-cyan-400 hover:text-black", label: "Email Me" }
+                { icon: Github, link: "https://github.com/ShoperGamer", color: "hover:bg-white hover:text-black", ariaLabel: "GitHub Profile" },
+                { icon: Linkedin, link: "https://www.linkedin.com/in/worgurn-ruenpitak-243a9330a", color: "hover:bg-[#0077b5] hover:text-white", ariaLabel: "LinkedIn Profile" },
+                { icon: Mail, link: "mailto:worgurn@gmail.com", color: "hover:bg-cyan-400 hover:text-black", label: "Email Me", ariaLabel: "Send an Email" }
               ].map((item, i) => (
                 <motion.a 
                   key={i}
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={item.ariaLabel}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`p-4 bg-white/5 rounded-full transition-all duration-300 flex items-center gap-2 ${item.color} ${item.label ? "px-8 font-bold" : ""}`}
+                  className={`p-4 bg-white/5 rounded-full transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-white/50 ${item.color} ${item.label ? "px-8 font-bold" : ""}`}
                 >
                   <item.icon size={item.label ? 20 : 32}/>
                   {item.label}
@@ -483,6 +474,23 @@ export default function Home() {
           © {new Date().getFullYear()} Crafted by <span className="text-gray-400">Worgurn Ruenpitak</span> | Powered by Next.js
         </p>
       </footer>
+
+      {/* --- FLOATING BACK TO TOP BUTTON --- */}
+      <AnimatePresence>
+        {showTopBtn && (
+          <motion.button
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+            className="fixed bottom-8 right-8 z-50 p-3 bg-cyan-500 text-black rounded-full shadow-[0_0_15px_rgba(6,182,212,0.5)] hover:bg-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            <ArrowUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
