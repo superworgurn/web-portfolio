@@ -1,0 +1,12 @@
+{
+  "name": "Worgurn Portfolio",
+  "short_name": "Worgurn",
+  "description": "Full-Stack Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "32x32", "type": "image/x-icon" }
+  ]
+}

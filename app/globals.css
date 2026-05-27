@@ -11,53 +11,50 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
 
-::-webkit-scrollbar-track {
-  background: #050505;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #22d3ee; 
-}
-
-/* Glass Card */
+/* Glass Card - อัปเดตสไตล์ให้รองรับเงาวิ่งตามเมาส์ได้คมชัดขึ้น */
 .glass-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Text Glow Animation */
+/* Optimized Text Glow */
 @keyframes glow {
   0%, 100% { text-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
-  50% { text-shadow: 0 0 20px rgba(34, 211, 238, 0.8), 0 0 30px rgba(79, 70, 229, 0.6); }
+  50% { text-shadow: 0 0 20px rgba(34, 211, 238, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
 }
 
 .text-glow {
-  animation: glow 3s ease-in-out infinite;
+  animation: glow 3s infinite ease-in-out;
 }
 
-/* Gradient Text Animation */
+/* Gradient Animation สำหรับหัวข้อ */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 .animate-gradient {
   background-size: 200% 200%;
-  animation: gradient-shift 5s ease infinite;
+  animation: gradient-x 6s infinite linear;
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ซ่อน Scrollbar ของกลุ่มทักษะและโปรเจกต์ในเวอร์ชันมือถือเพื่อความสะอาดตา */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
